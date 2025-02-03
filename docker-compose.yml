@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  department-api:
+    restart: on-failure
+    image: demo
+    container_name: user-registration-api
+    volumes:
+      - ./app/:/app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"  
+    networks:
+      - nginx-proxy
+    
+networks:
+  nginx-proxy:
+    external: true
